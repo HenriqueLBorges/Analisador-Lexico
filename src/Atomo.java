@@ -1,12 +1,13 @@
 
 public abstract class Atomo {
-	protected String atomo = "";
-
+	protected String atomoArmazenado = "";
+	int ascii = 0;
+	
 	public String getAtomo() {
-		return atomo;
+		return atomoArmazenado;
 	}
 
-	public Boolean detectarCaracteresEspeciais(String Atomo) {
+	public Boolean detectarCaracteresEspeciais(String atomo) {
 		for (int i = 0; i < atomo.length(); i++) {
 			if (verificaCaractereEspecial(atomo.charAt(i))){
 				return true;
@@ -15,15 +16,19 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaCaractereEspecial(char atomo) {
-		if (atomo == '/' || atomo == '*' || atomo == '$' || atomo == '¨'
-				|| atomo == '&' || atomo == '@' || atomo == '"'
-				|| atomo == '#' || atomo == '%' || atomo == '('
-				|| atomo == ')' || atomo == '-' || atomo == '='
-				|| atomo == '+' || atomo == '/' || atomo == '°'
-				|| atomo == '?' || atomo == '>' || atomo == '<'
-				|| atomo == '`' || atomo == '´' || atomo == '.') {
-				return true;
+		if ((!verificaAlfabeto(atomo)) && (!verificaNumero(atomo)))
+			return true;
+		return false;
+	}
+	public Boolean verificaAlfabeto(char atomo) {
+		if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)){
+			return true;
 		}
+		return false;
+	}
+	public Boolean verificaNumero(char atomo) {
+		if ((ascii >= 48 && ascii <= 57))
+			return true;
 		return false;
 	}
 	public abstract boolean setAtomo(String atomo);

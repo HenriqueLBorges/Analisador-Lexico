@@ -7,7 +7,7 @@ public class OperadorRelacional extends Atomo {
 		String operadores[] = { "<", "<=", "=", "<>", ">", ">=" };
 		for (int i = 0; i < operadores.length; i++) {
 			if (atomo.equals(operadores[i])) {
-				this.atomo = operadores[i];
+				this.atomoArmazenado = operadores[i];
 				return true;
 			}
 		}

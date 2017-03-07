@@ -10,7 +10,7 @@ public class PalavraReservada extends Atomo {
 				"VARIAVEIS"};
 		for (int i = 0; i < palavrasReservadas.length; i++) {
 			if (atomo.equals(palavrasReservadas[i])) {
-				this.atomo = palavrasReservadas[i];
+				this.atomoArmazenado = palavrasReservadas[i];
 				return true;
 			}
 		}
