@@ -9,9 +9,15 @@ public abstract class Atomo {
 
 	public Boolean detectarCaracteresEspeciais(String atomo) {
 		for (int i = 0; i < atomo.length(); i++) {
-			if (verificaCaractereEspecial(atomo.charAt(i))){
+			if (verificaCaractereEspecial(atomo.charAt(i)))
 				return true;
-			}
+		}
+		return false;
+	}
+	public Boolean verificaCaracteres(String atomo) {
+		for (int i = 0; i < atomo.length(); i++) {
+			if (verificaAlfabeto(atomo.charAt(i)))
+				return true;
 		}
 		return false;
 	}
@@ -21,12 +27,14 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaAlfabeto(char atomo) {
+		ascii = atomo;
 		if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)){
 			return true;
 		}
 		return false;
 	}
 	public Boolean verificaNumero(char atomo) {
+		ascii = atomo;
 		if ((ascii >= 48 && ascii <= 57))
 			return true;
 		return false;
