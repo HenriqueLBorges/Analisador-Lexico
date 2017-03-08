@@ -27,6 +27,7 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaAlfabeto(char atomo) {
+		resetAscii();
 		ascii = atomo;
 		if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)){
 			return true;
@@ -34,11 +35,14 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaNumero(char atomo) {
+		resetAscii();
 		ascii = atomo;
 		if ((ascii >= 48 && ascii <= 57))
 			return true;
 		return false;
 	}
 	public abstract boolean setAtomo(String atomo);
-
+	protected void resetAscii(){
+		this.ascii = 0;
+	}
 }

@@ -22,19 +22,15 @@ public class Idendificador extends Atomo {
 		return false;
 	}
 
-	// 65-90 97-122
 	private boolean verificar(String atomo) {
 		boolean verificador = false;
 		for (int i = 0; i < atomo.length(); i++) {
-			int ascii = atomo.charAt(0);
-			if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122))
+			if (verificaAlfabeto(atomo.charAt(0)))
 				verificador = true;
 			if (verificaCaractereEspecial(atomo.charAt(i)))
 				return false;
 		}
-		if (verificador)
-			return true;
-		return false;
+		return verificador;
 	}
 
 }
