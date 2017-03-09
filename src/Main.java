@@ -1,6 +1,6 @@
 
 public class Main {
-	public static void main(String Args []){
+	/*public static void main(String Args []){
 		String linha = "\\";
 		linha += '"';
 		linha += "ouhui636ey8732gb ydsvc f  ^ ^ `";
@@ -16,9 +16,16 @@ public class Main {
 		System.out.println("---------------------------------");
 		System.out.println(frase.setAtomo(linha));
 		System.out.println(frase.getAtomo());
-		linha = "/* ouhui636ey8732gb ydsvc f  ^ ^ `  */";
 		Comentario comentario = new Comentario();
 		System.out.println(comentario.setAtomo(linha));
 		System.out.println(comentario.getAtomo());
+	}*/
+	public static void main (String Args []){
+		AnalisadorLexico analisador = new AnalisadorLexico();
+		char aspas ='"';
+		String teste = "   algOritMO vVariavel 15155 1515.00 \\" +aspas +"henrique" +aspas; //+ "\\*" +aspas +"teste comentário em bloco*\\";
+		System.out.println("Antes =" +teste); 
+		teste = analisador.linha(teste); //18
+		System.out.println("\nDepois =" +teste);
 	}
 }
