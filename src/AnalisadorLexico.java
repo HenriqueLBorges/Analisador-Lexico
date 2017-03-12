@@ -9,21 +9,66 @@ public class AnalisadorLexico {
 			if (linha.charAt(i) != ' ') {
 				atomo = "";
 				j = i;
-				while (linha.charAt(i) != ' ') {
-					atomo += linha.charAt(i);
-					i++;
-					if (i == linha.length()) {
-						break;
+				System.out.println("TESTE - indice = " + j);
+				if (linha.charAt(j) == '/') {
+					atomo += linha.charAt(j);
+					boolean verifica = false;
+					if (j + 1 < linha.length()) {
+						j++;
 					}
+					while (linha.charAt(j) != '/') {
+						atomo += linha.charAt(j);
+						if (linha.charAt(j - 1) == '*' && linha.charAt(j) == '/') {
+							verifica = true;
+							break;
+						} else {
+							verifica = false;
+						}
+						if (j + 1 == linha.length()) {
+							break;
+						}
+						j++;
+					}
+					if (linha.charAt(j) == '/') {
+						atomo += linha.charAt(j);
+					}
+					verifica = true;
+					// atomo += linha.charAt(j);
+					System.out.println("TESTE - atomo = " + atomo);
+					if (verifica) {
+						try {
+							saida += adicionaAtomo(atomo);
+							System.out.println("TESTE - saida = " + saida);
+						} catch (AtomoInvalidoException e) {
+							// TODO Auto-generated catch block
+							char aspas = '"';
+							System.out.println(
+									"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
+							e.printStackTrace();
+						}
+						j++;
+					}
+					i = j;
+					atomo = "";
 				}
-				try {
-					saida += adicionaAtomo(atomo);
-				} catch (AtomoInvalidoException e) {
-					// TODO Auto-generated catch block
-					char aspas = '"';
-					System.out
-							.println("Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
-					e.printStackTrace();
+				if (i < linha.length()) {
+					while (linha.charAt(i) != ' ') {
+						atomo += linha.charAt(i);
+						if (i + 1 == linha.length()) {
+							break;
+						}
+						i++;
+					}
+
+					try {
+						saida += adicionaAtomo(atomo);
+					} catch (AtomoInvalidoException e) {
+						// TODO Auto-generated catch block
+						char aspas = '"';
+						System.out.println(
+								"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
+						e.printStackTrace();
+					}
 				}
 			}
 			if (i == linha.length()) {
