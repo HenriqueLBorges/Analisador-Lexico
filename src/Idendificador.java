@@ -14,7 +14,7 @@ public class Idendificador extends Atomo {
 								// letra do alfabeto
 			if (palavra.setAtomo(atomo)) {
 				this.atomoArmazenado = palavra.getAtomo();
-				return true;
+				return false;
 			}
 			this.atomoArmazenado = atomo;
 			return true;

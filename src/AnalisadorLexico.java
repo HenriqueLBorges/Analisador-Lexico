@@ -1,56 +1,30 @@
 
 public class AnalisadorLexico {
-	int numeroLinha = 0;
+	private int numeroLinha = 0;
+	private int contador = 0;
+	private String atomo = "";
 
 	public String linha(String linha) {
-		String atomo = "", saida = "";
-		int j;
+		String saida = "";
 		for (int i = 0; i < linha.length(); i++) {
 			if (linha.charAt(i) != ' ') {
 				atomo = "";
-				j = i;
-				System.out.println("TESTE - indice = " + j);
-				if (linha.charAt(j) == '/') {
-					atomo += linha.charAt(j);
-					boolean verifica = false;
-					if (j + 1 < linha.length()) {
-						j++;
+				contador = i;
+				if (comentario(linha)) {
+					try {
+						saida += adicionaAtomo();
+						//
+					} catch (AtomoInvalidoException e) {
+						// TODO Auto-generated catch block
+						char aspas = '"';
+						System.out.println(
+								"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
+						e.printStackTrace();
 					}
-					while (linha.charAt(j) != '/') {
-						atomo += linha.charAt(j);
-						if (linha.charAt(j - 1) == '*' && linha.charAt(j) == '/') {
-							verifica = true;
-							break;
-						} else {
-							verifica = false;
-						}
-						if (j + 1 == linha.length()) {
-							break;
-						}
-						j++;
-					}
-					if (linha.charAt(j) == '/') {
-						atomo += linha.charAt(j);
-					}
-					verifica = true;
-					// atomo += linha.charAt(j);
-					System.out.println("TESTE - atomo = " + atomo);
-					if (verifica) {
-						try {
-							saida += adicionaAtomo(atomo);
-							System.out.println("TESTE - saida = " + saida);
-						} catch (AtomoInvalidoException e) {
-							// TODO Auto-generated catch block
-							char aspas = '"';
-							System.out.println(
-									"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
-							e.printStackTrace();
-						}
-						j++;
-					}
-					i = j;
-					atomo = "";
+					contador++;
 				}
+				i = contador;
+				atomo = "";
 				if (i < linha.length()) {
 					while (linha.charAt(i) != ' ') {
 						atomo += linha.charAt(i);
@@ -61,7 +35,8 @@ public class AnalisadorLexico {
 					}
 
 					try {
-						saida += adicionaAtomo(atomo);
+						saida += adicionaAtomo();
+						
 					} catch (AtomoInvalidoException e) {
 						// TODO Auto-generated catch block
 						char aspas = '"';
@@ -78,7 +53,7 @@ public class AnalisadorLexico {
 		return saida;
 	}
 
-	private String adicionaAtomo(String atomo) throws AtomoInvalidoException {
+	private String adicionaAtomo() throws AtomoInvalidoException {
 		String saida = "";
 		boolean verifica = false;
 		Idendificador idendificador = new Idendificador();
@@ -88,42 +63,57 @@ public class AnalisadorLexico {
 		Frase frase = new Frase();
 		OperadorLogico op_logico = new OperadorLogico();
 		OperadorRelacional op_relacional = new OperadorRelacional();
-
+		PalavraReservada palavraReservada = new PalavraReservada();
+		
+		if (palavraReservada.setAtomo(atomo)) {
+			saida += palavraReservada.getAtomo();
+			saida += " ";
+			System.out.println("Palavra Reservada = "+atomo);
+			verifica = true;
+		}
+		
 		if (idendificador.setAtomo(atomo)) {
 			saida += idendificador.getAtomo();
 			saida += " ";
+			System.out.println("Indendificador = "+atomo);
 			verifica = true;
 		}
 
 		if (comentario.setAtomo(atomo)) {
 			saida += comentario.getAtomo();
 			saida += " ";
+			System.out.println("comentario = "+atomo);
 			verifica = true;
 		}
 
 		if (frase.setAtomo(atomo)) {
 			saida += frase.getAtomo();
 			saida += " ";
+			System.out.println("frase = "+atomo);
 			verifica = true;
 		}
 
 		if (inteiro.setAtomo(atomo)) {
 			saida += inteiro.getAtomo();
 			saida += " ";
+			System.out.println("inteiro = "+atomo);
 			verifica = true;
 		} else if (real.setAtomo(atomo)) {
 			saida += real.getAtomo();
 			saida += " ";
+			System.out.println("real = "+atomo);
 			verifica = true;
 		}
 		if (op_logico.setAtomo(atomo)) {
 			saida += op_logico.getAtomo();
 			saida += " ";
+			System.out.println("operador logico = "+atomo);
 			verifica = true;
 		}
 		if (op_relacional.setAtomo(atomo)) {
 			saida += op_relacional.getAtomo();
 			saida += " ";
+			System.out.println("operador relacional = "+atomo);
 			verifica = true;
 		}
 		if (!verifica) {
@@ -132,6 +122,30 @@ public class AnalisadorLexico {
 		}
 
 		return saida;
+	}
+	private boolean comentario(String linha){
+		if (linha.charAt(contador) == '/') {
+			atomo += linha.charAt(contador);
+			if (contador + 1 < linha.length()) {
+				contador++;
+			}
+			while (linha.charAt(contador) != '/') {
+				atomo += linha.charAt(contador);
+				if (linha.charAt(contador - 1) == '*' && linha.charAt(contador) == '/') {
+					break;
+				}
+				if (contador + 1 == linha.length()) {
+					break;
+				}
+				contador++;
+			}
+			if (linha.charAt(contador) == '/') {
+				atomo += linha.charAt(contador);
+			}
+			// atomo += linha.charAt(j);
+			return true;
+		}
+		return false;
 	}
 
 }

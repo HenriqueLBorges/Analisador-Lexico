@@ -8,7 +8,7 @@ public class Numero_Inteiro extends Atomo implements Numero {
 		for (int i = 0; i < atomo.length(); i++) {
 			if(verificaAlfabeto(atomo.charAt(i)))
 				return false;
-			if(verificaCaractereEspecial(atomo.charAt(i)) && atomo.charAt(i) != 46)
+			if(verificaCaractereEspecial(atomo.charAt(i)) || atomo.charAt(i) == 46)
 				return false;
 			if(verificaNumero(atomo.charAt(i)))
 				verificador = true;

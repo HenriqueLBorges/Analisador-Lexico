@@ -5,7 +5,6 @@ public class Comentario extends Atomo {
 	public boolean setAtomo(String atomo) {
 		// TODO Auto-generated method stub
 		boolean abreAspas = true;
-		System.out.println("TESTE COMENTARIO = " + atomo);
 		if (atomo.length() >= 4) {
 			if (atomo.charAt(0) != '/')
 				return false;
