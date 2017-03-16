@@ -21,11 +21,11 @@ public class AnalisadorLexico {
 								"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
 						e.printStackTrace();
 					}
-					contador++;
+					//contador++;
+					i = contador;
+					atomo = "";
 				}
-				i = contador;
-				atomo = "";
-				if (i < linha.length()) {
+				else if (i < linha.length()) {
 					while (linha.charAt(i) != ' ') {
 						atomo += linha.charAt(i);
 						if (i + 1 == linha.length()) {
@@ -85,7 +85,6 @@ public class AnalisadorLexico {
 			System.out.println("comentario = "+atomo);
 			verifica = true;
 		}
-
 		if (frase.setAtomo(atomo)) {
 			saida += frase.getAtomo();
 			saida += " ";
@@ -142,6 +141,7 @@ public class AnalisadorLexico {
 			if (linha.charAt(contador) == '/') {
 				atomo += linha.charAt(contador);
 			}
+			System.out.println("saida ficou ="+atomo);
 			// atomo += linha.charAt(j);
 			return true;
 		}
