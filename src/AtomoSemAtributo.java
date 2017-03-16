@@ -5,8 +5,10 @@ public class AtomoSemAtributo extends Atomo {
 	public boolean setAtomo(String atomo) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < atomo.length(); i++) {
-			if (verificaAtomoSemAtributo(atomo.charAt(i)));
-			return true;
+			if (verificaAtomoSemAtributo(atomo.charAt(i))) {
+				this.atomoArmazenado = atomo;
+				return true;
+			}
 		}
 		return false;
 	}

@@ -64,11 +64,19 @@ public class AnalisadorLexico {
 		OperadorLogico op_logico = new OperadorLogico();
 		OperadorRelacional op_relacional = new OperadorRelacional();
 		PalavraReservada palavraReservada = new PalavraReservada();
+		AtomoSemAtributo atomoSemAtributo = new AtomoSemAtributo();
 		
 		if (palavraReservada.setAtomo(atomo)) {
 			saida += palavraReservada.getAtomo();
 			saida += " ";
 			System.out.println("Palavra Reservada = "+atomo);
+			verifica = true;
+		}
+		
+		if (atomoSemAtributo.setAtomo(atomo)) {
+			saida += atomoSemAtributo.getAtomo();
+			saida += " ";
+			System.out.println("Atomo Sem Atributo = "+atomoSemAtributo.getAtomo());
 			verifica = true;
 		}
 		

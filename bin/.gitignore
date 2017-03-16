@@ -1,6 +1,7 @@
 /AnalisadorLexico.class
 /Atomo.class
 /AtomoInvalidoException.class
+/AtomoSemAtributo.class
 /Comentario.class
 /Frase.class
 /Idendificador.class
@@ -11,5 +12,3 @@
 /OperadorLogico.class
 /OperadorRelacional.class
 /PalavraReservada.class
-/AtomoSimples.class
-/AtomoSemAtributo.class
