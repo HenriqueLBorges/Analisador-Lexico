@@ -16,8 +16,8 @@ public class AtomoSemAtributo extends Atomo {
 	}
 
 	private boolean verificaAtomoSemAtributo(char caractere) {
-		// 40 = '(', 41 = ')', 45 = '-', 46 = '.', 47 = '/' e 59 = ';'
-		if (caractere == 40 || caractere == 41 || caractere == 45 || caractere == 46 || caractere == 47
+		// 37 = '%', 40 = '(', 41 = ')', 42 = '*', 42 = ',' 43 = '+' 45 = '-', 46 = '.', 47 = '/' e 59 = ';'
+		if (caractere == 37 || caractere == 40 || caractere == 41 || caractere == 42 || caractere == 43 || caractere == 44 || caractere == 45 || caractere == 46 || caractere == 47
 				|| caractere == 59) {
 			return true;
 		}
