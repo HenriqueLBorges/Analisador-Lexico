@@ -29,7 +29,7 @@ public class Main {
 		System.out.println("3 - Debug");
 		System.out.println("0 - Encerrar.");
 		opcao = leitor.nextInt();
-		caminho = "C:\\Users\\Henri\\Desktop\\teste.txt";
+		//caminho = "C:\\Users\\Henri\\Desktop\\teste.txt";
 		switch (opcao) {
 		case 0:
 			System.exit(0);

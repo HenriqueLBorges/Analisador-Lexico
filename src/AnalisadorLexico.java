@@ -11,11 +11,11 @@ public class AnalisadorLexico {
 			if (comentarioAberto) {
 				saida += linha.charAt(i);
 				if (i > 0 && linha.charAt(i - 1) == '*' && linha.charAt(i) == '/') {
-					System.out.println("Ficou false ");
+					//System.out.println("Ficou false ");
 					comentarioAberto = false;
 					saida += " ";
 				}
-				System.out.println("saida = " + saida);
+				//System.out.println("saida = " + saida);
 			} else if (linha.charAt(i) != ' ') {
 				atomo = "";
 				contador = i;
@@ -33,7 +33,7 @@ public class AnalisadorLexico {
 					// contador++;
 					i = contador;
 					atomo = "";
-				} else if (i < linha.length()) {
+				} else if (i < linha.length() && !comentarioAberto) {
 					while (linha.charAt(i) != ' ') {
 						atomo += linha.charAt(i);
 						if (i + 1 == linha.length()) {
@@ -53,6 +53,8 @@ public class AnalisadorLexico {
 						e.printStackTrace();
 					}
 				}
+				else
+					i--;
 				// saida += atomo;
 			}
 			if (i == linha.length()) {
@@ -236,7 +238,7 @@ public class AnalisadorLexico {
 			}
 			atomo = "";
 			comentarioAberto = true;
-			System.out.println("Ficou true");
+			//System.out.println("Ficou true");
 		}
 		return false;
 	}
