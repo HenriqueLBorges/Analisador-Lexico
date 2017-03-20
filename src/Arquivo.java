@@ -9,6 +9,7 @@ public class Arquivo {
 		BufferedReader br = new BufferedReader(new FileReader(caminho));
 		while (br.ready()) {
 			String linha = br.readLine();
+			System.out.println("linha lida = " +linha);
 			System.out.println(analisador.getNumeroLinha() +" - "+ analisador.linha(linha));
 		}
 		System.out.println("\n--------------------------------\n");

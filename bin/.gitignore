@@ -1,4 +1,5 @@
 /AnalisadorLexico.class
+/Arquivo.class
 /Atomo.class
 /AtomoInvalidoException.class
 /AtomoSemAtributo.class
@@ -12,4 +13,3 @@
 /OperadorLogico.class
 /OperadorRelacional.class
 /PalavraReservada.class
-/Arquivo.class

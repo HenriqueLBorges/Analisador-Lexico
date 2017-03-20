@@ -3,11 +3,20 @@ public class AnalisadorLexico {
 	private int numeroLinha = 0;
 	private int contador = 0;
 	private String atomo = "";
+	private boolean comentarioAberto = false;
 
 	public String linha(String linha) {
 		String saida = "";
 		for (int i = 0; i < linha.length(); i++) {
-			if (linha.charAt(i) != ' ') {
+			if (comentarioAberto) {
+				saida += linha.charAt(i);
+				if (i > 0 && linha.charAt(i - 1) == '*' && linha.charAt(i) == '/') {
+					System.out.println("Ficou false ");
+					comentarioAberto = false;
+					saida += " ";
+				}
+				System.out.println("saida = " + saida);
+			} else if (linha.charAt(i) != ' ') {
 				atomo = "";
 				contador = i;
 				if (comentario(linha)) {
@@ -44,6 +53,7 @@ public class AnalisadorLexico {
 						e.printStackTrace();
 					}
 				}
+				// saida += atomo;
 			}
 			if (i == linha.length()) {
 				break;
@@ -53,7 +63,7 @@ public class AnalisadorLexico {
 		return saida;
 	}
 
-	/*private String adicionaAtomo() throws AtomoInvalidoException {
+	private String adicionaAtomo1() throws AtomoInvalidoException {
 		String saida = "";
 		boolean verifica = false;
 		Idendificador idendificador = new Idendificador();
@@ -129,7 +139,7 @@ public class AnalisadorLexico {
 		}
 
 		return saida;
-	}*/
+	}
 
 	private String adicionaAtomo() throws AtomoInvalidoException {
 		String saida = "";
@@ -220,15 +230,18 @@ public class AnalisadorLexico {
 			}
 			if (linha.charAt(contador) == '/') {
 				atomo += linha.charAt(contador);
+				// System.out.println("saida ficou =" + atomo);
+				// atomo += linha.charAt(j);
+				return true;
 			}
-			System.out.println("saida ficou =" + atomo);
-			// atomo += linha.charAt(j);
-			return true;
+			atomo = "";
+			comentarioAberto = true;
+			System.out.println("Ficou true");
 		}
 		return false;
 	}
-	
-	public int getNumeroLinha(){
+
+	public int getNumeroLinha() {
 		return numeroLinha;
 	}
 

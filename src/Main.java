@@ -5,7 +5,7 @@ public class Main {
 	static String caminho = "";
 
 	public static void main(String Args[]) {
-		//C:\Users\hlborges\Desktop\teste.txt
+		//C:\Users\Henri\Desktop\teste.txt
 		menu();
 
 	}
@@ -29,6 +29,7 @@ public class Main {
 		System.out.println("3 - Debug");
 		System.out.println("0 - Encerrar.");
 		opcao = leitor.nextInt();
+		caminho = "C:\\Users\\Henri\\Desktop\\teste.txt";
 		switch (opcao) {
 		case 0:
 			System.exit(0);
