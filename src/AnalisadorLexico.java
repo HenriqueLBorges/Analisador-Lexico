@@ -11,15 +11,16 @@ public class AnalisadorLexico {
 			if (comentarioAberto) {
 				saida += linha.charAt(i);
 				if (i > 0 && linha.charAt(i - 1) == '*' && linha.charAt(i) == '/') {
-					//System.out.println("Ficou false ");
+					// System.out.println("Ficou false ");
 					comentarioAberto = false;
 					saida += " ";
 				}
-				//System.out.println("saida = " + saida);
+				// System.out.println("saida = " + saida);
 			} else if (linha.charAt(i) != ' ') {
 				atomo = "";
 				contador = i;
 				if (comentario(linha)) {
+					//System.out.println("Deu certo!");
 					try {
 						saida += adicionaAtomo();
 						//
@@ -52,8 +53,7 @@ public class AnalisadorLexico {
 								"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
 						e.printStackTrace();
 					}
-				}
-				else
+				} else
 					i--;
 				// saida += atomo;
 			}
@@ -230,15 +230,45 @@ public class AnalisadorLexico {
 					contador++;
 				}
 			}
-			if (linha.charAt(contador) == '/') {
+			//System.out.println("atomo =" +atomo);
+			if ((linha.charAt(contador) == '/')) {
 				atomo += linha.charAt(contador);
-				// System.out.println("saida ficou =" + atomo);
+				 //System.out.println("saida ficou =" + atomo);
 				// atomo += linha.charAt(j);
+				return true;
+			}
+			else if((linha.charAt(contador) == '"')){
+				atomo += linha.charAt(contador);
 				return true;
 			}
 			atomo = "";
 			comentarioAberto = true;
 			//System.out.println("Ficou true");
+		}
+		else if(linha.charAt(contador) == '\\'){
+			atomo += linha.charAt(contador);
+			if (contador + 1 < linha.length()) {
+				contador++;
+			}
+			atomo += linha.charAt(contador);
+			if (linha.charAt(contador) == '"') {
+				//atomo += linha.charAt(contador);
+				if (contador + 1 < linha.length()) {
+					contador++;
+				}
+				while (linha.charAt(contador) != '"') {
+					atomo += linha.charAt(contador);
+					if (contador + 1 == linha.length()) {
+						break;
+					}
+					contador++;
+				}
+			}
+			if((linha.charAt(contador) == '"')){
+				atomo += linha.charAt(contador);
+				//System.out.println("atomo = " +atomo);
+				return true;
+			}
 		}
 		return false;
 	}

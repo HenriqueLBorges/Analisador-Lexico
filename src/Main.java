@@ -5,7 +5,7 @@ public class Main {
 	static String caminho = "";
 
 	public static void main(String Args[]) {
-		//C:\Users\Henri\Desktop\teste.txt
+		//C:\Users\hlborges\Desktop\teste.txt
 		menu();
 
 	}
