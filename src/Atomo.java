@@ -8,6 +8,7 @@ public abstract class Atomo {
 	}
 
 	public Boolean detectarCaracteresEspeciais(String atomo) {
+		resetAscii();
 		for (int i = 0; i < atomo.length(); i++) {
 			if (verificaCaractereEspecial(atomo.charAt(i)))
 				return true;
@@ -15,6 +16,7 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaCaracteres(String atomo) {
+		resetAscii();
 		for (int i = 0; i < atomo.length(); i++) {
 			if (verificaAlfabeto(atomo.charAt(i)))
 				return true;
@@ -22,6 +24,7 @@ public abstract class Atomo {
 		return false;
 	}
 	public Boolean verificaCaractereEspecial(char atomo) {
+		resetAscii();
 		if ((!verificaAlfabeto(atomo)) && (!verificaNumero(atomo)))
 			return true;
 		return false;

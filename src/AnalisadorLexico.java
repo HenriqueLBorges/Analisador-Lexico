@@ -9,6 +9,7 @@ public class AnalisadorLexico {
 		String saida = "";
 		for (int i = 0; i < linha.length(); i++) {
 			if (comentarioAberto) {
+				System.out.println("teste");
 				saida += linha.charAt(i);
 				if (i > 0 && linha.charAt(i - 1) == '*' && linha.charAt(i) == '/') {
 					// System.out.println("Ficou false ");
@@ -51,6 +52,7 @@ public class AnalisadorLexico {
 						System.out.println(
 								"Syntax ERROR - linha " + this.numeroLinha + ", atomo = " + aspas + atomo + aspas);
 						e.printStackTrace();
+						break;
 					}
 				} else
 					i--;
@@ -228,6 +230,7 @@ public class AnalisadorLexico {
 					}
 					contador++;
 				}
+				comentarioAberto = true;
 			}
 			//System.out.println("atomo =" +atomo);
 			if ((linha.charAt(contador) == '/')) {
@@ -241,7 +244,7 @@ public class AnalisadorLexico {
 				return true;
 			}
 			atomo = "";
-			comentarioAberto = true;
+			
 			//System.out.println("Ficou true");
 		}
 		else if(linha.charAt(contador) == '\\'){
