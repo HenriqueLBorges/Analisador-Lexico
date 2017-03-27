@@ -5,7 +5,7 @@ public class Main {
 	static String caminho = "";
 
 	public static void main(String Args[]) {
-		//C:\Users\hlborges\Desktop\teste.txt
+		//C:\Users\hlborges\Desktop\TESTE.PTL
 		menu();
 
 	}
@@ -29,7 +29,8 @@ public class Main {
 		System.out.println("3 - Debug");
 		System.out.println("0 - Encerrar.");
 		opcao = leitor.nextInt();
-		//caminho = "C:\\Users\\Henri\\Desktop\\teste.txt";
+		//caminho = "C:\\Users\\hlborges\\Desktop\\ALGORITMO.PTL";
+		//C:\Users\hlborges\Desktop\TESTE.PTL
 		switch (opcao) {
 		case 0:
 			System.exit(0);

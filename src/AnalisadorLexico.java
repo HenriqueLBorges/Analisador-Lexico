@@ -20,7 +20,6 @@ public class AnalisadorLexico {
 				atomo = "";
 				contador = i;
 				if (comentario(linha)) {
-					//System.out.println("Deu certo!");
 					try {
 						saida += adicionaAtomo();
 						//
@@ -270,6 +269,7 @@ public class AnalisadorLexico {
 				return true;
 			}
 		}
+		atomo = "";
 		return false;
 	}
 
