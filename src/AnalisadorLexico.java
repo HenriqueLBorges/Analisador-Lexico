@@ -9,7 +9,6 @@ public class AnalisadorLexico {
 		String saida = "";
 		for (int i = 0; i < linha.length(); i++) {
 			if (comentarioAberto) {
-				System.out.println("teste");
 				saida += linha.charAt(i);
 				if (i > 0 && linha.charAt(i - 1) == '*' && linha.charAt(i) == '/') {
 					// System.out.println("Ficou false ");
