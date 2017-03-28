@@ -77,6 +77,7 @@ public class AnalisadorLexico {
 		OperadorRelacional op_relacional = new OperadorRelacional();
 		PalavraReservada palavraReservada = new PalavraReservada();
 		AtomoSemAtributo atomoSemAtributo = new AtomoSemAtributo();
+		Exponencial exponencial = new Exponencial();
 
 		if (palavraReservada.setAtomo(atomo)) {
 			saida += palavraReservada.getAtomo();
@@ -135,6 +136,12 @@ public class AnalisadorLexico {
 			System.out.println("operador relacional = " + atomo);
 			verifica = true;
 		}
+		if (exponencial.setAtomo(atomo)) {
+			saida += exponencial.getAtomo();
+			saida += " ";
+			System.out.println("exponencial = " + atomo);
+			verifica = true;
+		}
 		if (!verifica) {
 			AtomoInvalidoException erro = new AtomoInvalidoException();
 			throw erro;
@@ -155,6 +162,7 @@ public class AnalisadorLexico {
 		OperadorRelacional op_relacional = new OperadorRelacional();
 		PalavraReservada palavraReservada = new PalavraReservada();
 		AtomoSemAtributo atomoSemAtributo = new AtomoSemAtributo();
+		Exponencial exponencial = new Exponencial();
 
 		if (palavraReservada.setAtomo(atomo)) {
 			saida += palavraReservada.getAtomo();
@@ -201,6 +209,11 @@ public class AnalisadorLexico {
 		}
 		if (op_relacional.setAtomo(atomo)) {
 			saida += op_relacional.getAtomo();
+			saida += " ";
+			verifica = true;
+		}
+		if (exponencial.setAtomo(atomo)) {
+			saida += exponencial.getAtomo();
 			saida += " ";
 			verifica = true;
 		}
