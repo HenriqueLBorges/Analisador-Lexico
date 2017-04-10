@@ -4,6 +4,7 @@
 /AtomoInvalidoException.class
 /AtomoSemAtributo.class
 /Comentario.class
+/Exponencial.class
 /Frase.class
 /Idendificador.class
 /Main.class
@@ -13,4 +14,3 @@
 /OperadorLogico.class
 /OperadorRelacional.class
 /PalavraReservada.class
-/Exponencial.class
