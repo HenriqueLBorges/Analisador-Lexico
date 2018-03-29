@@ -1,0 +1,27 @@
+\"Átomo de identificador =" variavel
+\"Átomo de frase =" \"Essa é uma frase" 
+\"Átomo de Numero inteiro =" 10
+\"Átomo de Numero real =" 10.5
+\"Átomos de Operadores lógicos =" & $ ! 
+\"Átomos de operadores relacionais =" < <= = <> > >=
+\"Átomos sem atributos =" . ( ) ; , - + * / %
+\"Átomo de Comentário =" /* Esse é um
+átomo de Comentário. Com ele
+consigo realizar comentários
+em blocos.
+Gremi, Thalles */
+
+\"TESTE DE ERROS"
+
+\"Átomo de identificador =" _variavel
+\"Átomo de frase =" \"Essa é uma frase" "Essa é uma frase" 
+\"Átomo de Numero inteiro =" 10a
+\"Átomo de Numero real =" 10.5e
+\"Átomos de Operadores lógicos =" & $ ! 
+\"Átomos de operadores relacionais =" <_ <=x =4 <.> {> >=/
+\"Átomos sem atributos =" .. () &) z; ?, =- !+ 3* \/ _%
+\"Átomo de Comentário =" / Esse é um
+átomo de Comentário. Com ele
+consigo realizar comentários
+em blocos.
+Gremi, Thalles */
